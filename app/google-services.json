@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "432218261445",
+    "project_id": "aectnp-16fb9",
+    "storage_bucket": "aectnp-16fb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432218261445:android:22ae63ba93a27f3c156dac",
+        "android_client_info": {
+          "package_name": "com.gtech.aectnp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432218261445-rpq8l7v7lf8lj7vircfvh12ksufgoepa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJDxGSJijWuQ881yJkdpyQaELa4nlvxMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432218261445-rpq8l7v7lf8lj7vircfvh12ksufgoepa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
