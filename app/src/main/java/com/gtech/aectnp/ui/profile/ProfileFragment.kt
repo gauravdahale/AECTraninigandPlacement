@@ -140,6 +140,10 @@ class ProfileFragment : Fragment() {
             if (binding.sem8Status.text.toString().isNotBlank()) map["sem8Status"] =
                 binding.sem8Status.text.toString()
 
+            if (binding.currentsem.text.toString().isNotBlank()) map["currentsem"] =
+                binding.currentsem.text.toString()
+
+
             FirebaseDatabase.getInstance().reference.child("users").child(currentuser)
                 .updateChildren(map).addOnCompleteListener { it ->
                     if (it.isSuccessful) Toast.makeText(
