@@ -51,22 +51,19 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
         mAuth = FirebaseAuth.getInstance()
+       if(mAuth!!.currentUser?.uid !=null){
+           val intent = Intent(this,MainActivity::class.java)
+           startActivity(intent)
+           finish()
+       }
         mDatabaseReference = mDatabase.reference
         mDatabaseReference?.child("test")!!.setValue("test")
         val branchlist = arrayOf("IT", "Mechanical", "Civil", "Electronics", "Computer")
-        val semlist = arrayOf(
-            "Sem I",
-            "Sem II",
-            "Sem III",
-            "Sem IV",
-            "Sem V",
-            "Sem VI",
-            "Sem VII",
-            "Sem VIII"
-        )
+        val semlist = arrayOf("Sem I", "Sem II", "Sem III", "Sem IV", "Sem V", "Sem VI", "Sem VII", "Sem VIII")
+        val semadapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, semlist)
+
         val branchadapter =
             ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, branchlist)
-        val semadapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, semlist)
         binding.branch.setAdapter(branchadapter)
         binding.sem.setAdapter(semadapter)
         binding.authDob.editText?.setOnClickListener {
@@ -92,7 +89,6 @@ class LoginActivity : AppCompatActivity() {
             ).show()
 
         }
-
 
         binding.submitNumber.setOnClickListener {
             when {
@@ -247,7 +243,7 @@ class LoginActivity : AppCompatActivity() {
                         val datetime =
                             DateFormat.getDateTimeInstance().format(Calendar.getInstance().time)
                         NewUser(
-                            mobile!!.trim { it <= ' ' }, name,
+                            mobile.trim { it <= ' ' }, name,
                             dob,
                             email,
                             currentsem,
@@ -288,14 +284,14 @@ class LoginActivity : AppCompatActivity() {
             val user = UserModel()
 //        user.userOccupation = newuserOccupation
 //        user.userNumber = newuserNumber
-            user.number = newusername
+            user.number = newuserNumber
             user.timestamp = ServerValue.TIMESTAMP
             user.dob = dob
             user.email = email
             user.branch = branch
             user.currentsem = sem
 //        user.token = newtoken
-            user.name = newuserNumber
+            user.name = newusername
             //referring to movies node and setting the values from movie object to that location
             FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
@@ -320,12 +316,14 @@ class LoginActivity : AppCompatActivity() {
             val map = HashMap<String, Any>()
             map["name"] = user.name!!
             map["email"] = user.email!!
+            map["number"] = user.number!!
             map["dob"] = user.dob!!
             map["currentsem"] = user.currentsem!!
             map["branch"] = user.branch!!
             map["timestamp"] = ServerValue.TIMESTAMP
 //        mDatabaseReference!!.child("users").push().setValue(user)
             mDatabaseReference!!.child("users").child(mAuth!!.currentUser!!.uid).updateChildren(map)
+          getSharedPreferences("prefs",Context.MODE_PRIVATE).edit().putString("branch",branch).apply()
             val mAnalytics = FirebaseAnalytics.getInstance(this)
             val bundle = Bundle()
             bundle.putString("NewUser", newuserNumber)

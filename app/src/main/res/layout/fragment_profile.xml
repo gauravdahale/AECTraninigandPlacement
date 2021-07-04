@@ -16,10 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
+        android:enabled="false"
         android:layout_marginTop="8dp"
         android:hint="Name">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -27,23 +29,29 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:enabled="false"
+
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="8dp"
         android:hint="Number">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
+        android:theme="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         android:layout_marginTop="8dp"
         android:hint="Current Semester">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
+            android:inputType="none"
+            android:id="@+id/currentsem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -62,6 +70,7 @@
             android:hint="10th Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/percentage10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -76,9 +85,10 @@
             android:hint="10th Marks">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/marks10"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
 
+                android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,6 +108,7 @@
             android:hint="Diploma Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/percentagediploma"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -112,9 +123,10 @@
             android:hint="Diploma Marks">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/marksdiploma"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
 
+                android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -134,6 +146,7 @@
             android:hint="12th Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/percentage12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -148,9 +161,10 @@
             android:hint="12th Marks">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/marks12"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
 
+                android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -170,6 +184,7 @@
             android:hint="SEM I Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/persem1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -207,6 +222,7 @@
             android:hint="SEM II Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/persem2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -244,6 +260,7 @@
             android:hint="SEM III Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/persem3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -280,6 +297,7 @@
             android:hint="SEM IV Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/persem4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -317,6 +335,7 @@
             android:hint="SEM V Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/persem5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -351,9 +370,10 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:hint="SEM I Percentage">
+            android:hint="SEM VI Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/persem6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -390,6 +410,7 @@
             android:hint="SEM VII Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/persem7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />
@@ -429,6 +450,7 @@
             android:hint="SEM VIII Percentage">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/persem8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberDecimal" />

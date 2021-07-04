@@ -1,7 +1,9 @@
 package com.gtech.aectnp.ui.notifications
 
+import android.content.Context
 import android.os.Bundle
 import android.renderscript.Sampler
+import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -21,6 +23,7 @@ class NotificationsFragment : Fragment() {
     val list = ArrayList<NotificationModel>()
     private var columnCount = 1
     val mAdapter = MyItemRecyclerViewAdapter(list)
+  lateinit var branch:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,7 +37,7 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_notifications_list, container, false)
-
+branch = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE).getString("branch","") !!
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
@@ -51,7 +54,7 @@ class NotificationsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getMessages()
+        getNotifications()
     }
 
     fun getMessages() {
@@ -62,16 +65,20 @@ class NotificationsFragment : Fragment() {
                         branches.add(it.getValue(String::class.java)!!)
                     }
                     branches.forEach {
-                        getNotifications(it) } }
+                        getNotifications() } }
                 override fun onCancelled(error: DatabaseError) {
                 } }) }
 
-    fun getNotifications(branch: String) {
+    fun getNotifications() {
         FirebaseDatabase.getInstance().reference.child(branch)
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (child in snapshot.children) {
-                        list.add(child.getValue(NotificationModel::class.java)!!)
+          val message = child.getValue(NotificationModel::class.java)!!
+                        if(message.group== branch || message.group== "all") {
+                            list.add(message)
+                        }
+                    mAdapter.notifyDataSetChanged()
                     }
                 }
                 override fun onCancelled(error: DatabaseError) {}

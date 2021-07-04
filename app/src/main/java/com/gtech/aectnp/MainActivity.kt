@@ -20,27 +20,20 @@ import com.gtech.aectnp.ui.profile.ProfileFragment
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-lateinit var mAuth :FirebaseAuth
+    lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-mAuth = FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//if(mAuth.currentUser?.uid == null){
-//    val intent = Intent(this,LoginActivity::class.java)
-//    startActivity(intent)
-//    finish()
-//}
         val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         sectionsPagerAdapter.addFrag(NotificationsFragment(), "Notifications")
-        sectionsPagerAdapter.addFrag(ProfileFragment(), "Profile")
-
+        sectionsPagerAdapter.addFrag(ProfileFragment(), "Marks Update")
         val viewPager: ViewPager = binding.viewPager
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
         val fab: FloatingActionButton = binding.fab
-
         fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
