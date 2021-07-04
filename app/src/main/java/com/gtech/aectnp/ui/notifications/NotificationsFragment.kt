@@ -61,21 +61,25 @@ branch = requireContext().getSharedPreferences("prefs", Context.MODE_PRIVATE).ge
         FirebaseDatabase.getInstance().reference.child("branches")
             .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+
                     snapshot.children.forEach {
                         branches.add(it.getValue(String::class.java)!!)
                     }
                     branches.forEach {
-                        getNotifications() } }
+//                        getNotifications()
+                    }
+                }
                 override fun onCancelled(error: DatabaseError) {
                 } }) }
 
     fun getNotifications() {
-        FirebaseDatabase.getInstance().reference.child(branch)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
+        FirebaseDatabase.getInstance().reference.child("messages")
+            .addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
+          list.clear()
                     for (child in snapshot.children) {
           val message = child.getValue(NotificationModel::class.java)!!
-                        if(message.group== branch || message.group== "all") {
+                        if(message.group== branch || message.group== "All") {
                             list.add(message)
                         }
                     mAdapter.notifyDataSetChanged()

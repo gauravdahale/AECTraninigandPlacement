@@ -7,8 +7,6 @@ import android.widget.TextView
 import com.gtech.aectnp.databinding.FragmentNotificationsBinding
 import com.gtech.aectnp.ui.notifications.placeholder.NotificationModel
 
-import java.util.*
-
 /**
  * [RecyclerView.Adapter] that can display a [NotificationModel].
  * TODO: Replace the implementation with code for your data type.
@@ -32,8 +30,8 @@ class MyItemRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.title.text = item.title
-        holder.content.text =item.content
-        holder.date.setText(item.timestamp.toString())
+        holder.content.text =item.message
+        holder.date.setText(item.getdateasformatted(item.date!!))
     }
 
     override fun getItemCount(): Int = values.size
