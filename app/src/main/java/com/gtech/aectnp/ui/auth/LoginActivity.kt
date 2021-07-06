@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
            finish()
        }
         mDatabaseReference = mDatabase.reference
-        val branchlist = arrayOf("IT", "Mechanical", "Civil", "Electronics", "Computer")
+        val branchlist = arrayOf("IT", "CSE", "MECH", "CHEM", "Computer","EXTC")
         val semlist = arrayOf("Sem I", "Sem II", "Sem III", "Sem IV", "Sem V", "Sem VI", "Sem VII", "Sem VIII")
         val semadapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, semlist)
 
