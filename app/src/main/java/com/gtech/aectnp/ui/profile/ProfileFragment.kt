@@ -142,6 +142,10 @@ class ProfileFragment : Fragment() {
 
             if (binding.currentsem.text.toString().isNotBlank()) map["currentsem"] =
                 binding.currentsem.text.toString()
+            if (binding.skills.text.toString().isNotBlank()) map["skills"] =
+                binding.skills.text.toString()
+            if (binding.hobbies.text.toString().isNotBlank()) map["currentsem"] =
+                binding.hobbies.text.toString()
 
 
             FirebaseDatabase.getInstance().reference.child("users").child(currentuser)
@@ -181,6 +185,8 @@ val m = snapshot.getValue(GetProfile::class.java)
   m?.sem6Status?.let {  binding.sem6Status.setText(it) }
   m?.sem7Status?.let {  binding.sem7Status.setText(it) }
   m?.sem8Status?.let {  binding.sem8Status.setText(it) }
+  m?.skills?.let {  binding.skills.setText(it) }
+  m?.hobbies?.let {  binding.hobbies.setText(it) }
     }
 
     override fun onCancelled(error: DatabaseError) {

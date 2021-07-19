@@ -23,5 +23,7 @@ class GetProfile {
     var sem6Status :String? = null
     var sem7Status :String? = null
     var sem8Status : String? = null
+    var hobbies : String? = null
+    var skills : String? = null
 
 }
