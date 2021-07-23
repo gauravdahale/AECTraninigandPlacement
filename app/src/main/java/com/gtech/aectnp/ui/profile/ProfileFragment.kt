@@ -12,7 +12,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.gtech.aectnp.R
 import com.gtech.aectnp.databinding.FragmentProfileBinding
 import com.gtech.aectnp.ui.auth.GetUserModel
 
@@ -144,8 +143,10 @@ class ProfileFragment : Fragment() {
                 binding.currentsem.text.toString()
             if (binding.skills.text.toString().isNotBlank()) map["skills"] =
                 binding.skills.text.toString()
-            if (binding.hobbies.text.toString().isNotBlank()) map["currentsem"] =
-                binding.hobbies.text.toString()
+            if (binding.resume.text.toString().isNotBlank()) map["resume"] =
+                binding.resume.text.toString()
+            if (binding.certifications.text.toString().isNotBlank()) map["certifications"] =
+                binding.certifications.text.toString()
 
 
             FirebaseDatabase.getInstance().reference.child("users").child(currentuser)
@@ -186,7 +187,8 @@ val m = snapshot.getValue(GetProfile::class.java)
   m?.sem7Status?.let {  binding.sem7Status.setText(it) }
   m?.sem8Status?.let {  binding.sem8Status.setText(it) }
   m?.skills?.let {  binding.skills.setText(it) }
-  m?.hobbies?.let {  binding.hobbies.setText(it) }
+  m?.resume?.let {  binding.resume.setText(it) }
+  m?.certification?.let {  binding.certifications.setText(it) }
     }
 
     override fun onCancelled(error: DatabaseError) {

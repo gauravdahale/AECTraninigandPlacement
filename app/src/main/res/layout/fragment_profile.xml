@@ -532,14 +532,31 @@
             android:layout_marginHorizontal="8dp"
             android:layout_marginTop="8dp"
             android:layout_weight="1"
-            android:hint="Hobbies">
+            android:hint="Resume">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/hobbies"
+                android:id="@+id/resume"
                 android:layout_width="match_parent"
 
                 android:layout_height="wrap_content"
-                android:inputType="numberDecimal" />
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:hint="Certifications">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/certifications"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
